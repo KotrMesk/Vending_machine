@@ -5,9 +5,10 @@ namespace SeleniumTests.Tests
 {
     internal class InsertMoneyToVendingMachineScenario : BaseTest
     {
+      
         [Test]
 
-        public void CheckAmountAddedToVendingMachine()
+        public void CheckAmountAddedToAllDenominations()
         {
             string fiveEurosAmount = "1";
             string twoEurosAmount = "2";

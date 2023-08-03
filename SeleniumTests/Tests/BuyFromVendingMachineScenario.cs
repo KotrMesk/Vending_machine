@@ -152,6 +152,42 @@ namespace SeleniumTests.Tests
         }
 
         [Test]
+        public void CheckBuyingChocolateWithNotEnoughMoney()
+        {
+            string tenCentsAmount = "5";
+            double totalAmount = 0.1 * double.Parse(tenCentsAmount);
+            string expectedTotalAmount = totalAmount.ToString("0.00").Replace(',', '.');
+            string expectedMessageResults = "You have not paid enough. €0.00 has been returned.";
+
+            VendingMachinePage.Open();
+            VendingMachinePage.InsertTenCentsAmount(tenCentsAmount);
+            VendingMachinePage.ClickChocolateButton();
+            string actualMessageResults = VendingMachinePage.GetMessageWithMoneyAmountReturned();
+            string actualTotalAmount = VendingMachinePage.GetTotalAmount();
+
+            Assert.AreEqual(expectedMessageResults, actualMessageResults);
+            Assert.AreEqual(expectedTotalAmount, actualTotalAmount);
+        }
+
+        [Test]
+        public void CheckBuyingBrownieWithNotEnoughMoney()
+        {
+            string tenCentsAmount = "5";
+            double totalAmount = 0.1 * double.Parse(tenCentsAmount);
+            string expectedTotalAmount = totalAmount.ToString("0.00").Replace(',', '.');
+            string expectedMessageResults = "You have not paid enough. €0.00 has been returned.";
+
+            VendingMachinePage.Open();
+            VendingMachinePage.InsertTenCentsAmount(tenCentsAmount);
+            VendingMachinePage.ClickBrownieButton();
+            string actualMessageResults = VendingMachinePage.GetMessageWithMoneyAmountReturned();
+            string actualTotalAmount = VendingMachinePage.GetTotalAmount();
+
+            Assert.AreEqual(expectedMessageResults, actualMessageResults);
+            Assert.AreEqual(expectedTotalAmount, actualTotalAmount);
+        }
+
+        [Test]
         public void CheckBuyingTwixWithoutMoney()
         {
             string expectedTotalAmount = "0.00";
