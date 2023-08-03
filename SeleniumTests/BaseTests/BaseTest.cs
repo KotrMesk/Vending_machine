@@ -22,7 +22,7 @@ namespace SeleniumTests.BaseTests
                 string filePath = Driver.TakeScreenshot(TestContext.CurrentContext.Test.MethodName);
                 TestContext.AddTestAttachment(filePath);
             }
-            //Driver.CloseDriver();
+            Driver.CloseDriver();
         }
     }
 }
